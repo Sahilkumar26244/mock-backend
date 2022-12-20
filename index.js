@@ -2,8 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const connectDB = require("./config/db");
 const cors = require('cors');
-const jobRouter = require("./routes/jobRoutes");
-
+const randomRoute = require("./routes/route")
 
 const app = express();
 
@@ -16,7 +15,7 @@ app.get('/',(req,res) => {
     res.send("welcome")
 })
 
-app.use('/jobs' , jobRouter );
+app.use("/random" , randomRoute);
 
 
 const PORT = process.env.PORT || 4040
