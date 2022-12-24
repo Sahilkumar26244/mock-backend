@@ -2,11 +2,13 @@ const dotenv=require("dotenv").config()
 const jwt = require('jsonwebtoken');
 
 const authentication = (req, res, next) => {
-    const token = req.headers?.token.split(" ")[1];
+    // console.log(req.headers);
+
+    const token = req.headers?.authorization.split(" ")[1];
     try{
         const decoded = jwt.verify(token, process.env.SECRET_KEY);
         req.body.userId = decoded.userId;
-        console.log(decoded)
+        // console.log(decoded)
         next()
     }
     catch(err){
